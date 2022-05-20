@@ -1,0 +1,88 @@
+.add-member-btn {
+  margin-left: 20px;
+  cursor: pointer;
+}
+.open-close-input {
+  font-size: 25px;
+}
+.add-member {
+  margin-left: 20px;
+}
+.search-result {
+  background-color: white;
+  position: absolute;
+  z-index: 6;
+  width: 300px;
+  margin-left: 10px;
+}
+
+.user-info {
+  display: inline;
+  color: black;
+  font-size: medium;
+}
+
+.each-result {
+  display: block;
+  height: 60px;
+  padding: 10px;
+}
+
+.add-btn {
+  padding: 3px 7px;
+  float: right;
+  margin-top: 5px;
+}
+
+.search-user {
+  height: 40px;
+  width: 300px;
+  font-size: medium;
+  margin-left: 10px;
+  border: 0;
+  outline: 0;
+  background: white;
+  border-bottom: 1px solid white;
+}
+
+.search-img {
+  margin-right: 10px;
+}
+
+/*button css*/
+.ico-btn {
+  position: relative;
+  top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /*   border: 2px solid; */
+}
+
+.ico-btn__plus {
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ico-btn__plus::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform: rotate(90deg);
+}
+
+.ico-btn.is-active .ico-btn__plus {
+  transform: rotate(225deg);
+}

@@ -1,0 +1,84 @@
+.comment {
+  display: flex;
+  align-items: flex-start;
+}
+
+.full-comment {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.comment img {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-body {
+  width: 100%;
+  height: auto;
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: 0px 0px 3px #888888;
+  white-space: pre-wrap;
+}
+
+.task-description[contentEditable='true']:active {
+  padding: 10px 15px;
+}
+
+.task-description[contentEditable='true']:focus {
+  padding: 10px 15px;
+}
+
+.comment-actions {
+  width: 100%;
+  height: auto;
+}
+
+.edit-comment-btn {
+  font-size: 14px;
+  font-style: italic;
+  cursor: pointer;
+  padding: 0;
+  width: auto;
+  height: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.action-btns {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.add-emoji-btn {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.add-emoji-btn img {
+  width: 20px;
+  height: auto;
+}
+
+.emoji {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.emoji-one {
+  margin-left: 5px;
+  padding: 2px 5px 2px 5px;
+  border-radius: 40%;
+  background-color: #f0f4f7;
+}
+
+.emoji-one:hover {
+  border: 1px solid #888888;
+  background-color: white;
+}

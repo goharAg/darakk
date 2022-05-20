@@ -1,0 +1,48 @@
+{
+  "name": "darak",
+  "version": "1.0.0",
+  "description": " ",
+  "main": "index.js",
+  "scripts": {
+    "generate": "sequelize migration:generate --name",
+    "migrate": "sequelize db:migrate",
+    "unmigrate": "sequelize db:migrate:undo",
+    "lint": "eslint app/** --fix || exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "heroku-postbuild": "cd ../client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hovhannisyangurgen/almost-trello.git",
+    "directory": "api"
+  },
+  "author": "Web Development Internship Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hovhannisyangurgen/almost-trello/issues"
+  },
+  "homepage": "https://github.com/hovhannisyangurgen/almost-trello#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "redis": "^4.0.4",
+    "sequelize": "^6.17.0",
+    "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
+  }
+}

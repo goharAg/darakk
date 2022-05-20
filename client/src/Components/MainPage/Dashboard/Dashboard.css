@@ -1,0 +1,159 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: auto;
+  margin-top: 50px;
+  width: 70%;
+  background-color: #fbfbfb;
+  padding: 20px 50px;
+}
+
+.boardLogo {
+  width: 40px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #172b4d;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.boards-container {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.board-item {
+  position: relative;
+  background-image: url(/src/Assets/Images/boardItem.jpg);
+  background-size: cover;
+  border-radius: 4px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  padding: 5px 10px;
+  text-align: start;
+  transition: 200ms transform;
+
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.board-title-input {
+  width: 80%;
+  margin-left: 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  /* font-size: 1.1em; */
+}
+
+.admin-icon-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 7px;
+}
+.delete-icon-container {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin: 7px;
+}
+
+.delete-icon-container .btn {
+  margin: 3px;
+}
+
+.admin-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-icon-tooltip {
+  visibility: hidden;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -62px;
+  font-size: 12px;
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  transition-delay: 100ms;
+  position: absolute;
+}
+
+.admin-icon-container:hover .admin-icon-tooltip {
+  visibility: visible;
+}
+
+a {
+  text-decoration: none;
+  color: #172b4d;
+}
+
+.board-item:hover {
+  cursor: pointer;
+  color: rgb(252, 125, 125);
+  transform: translate(0px, -5px);
+}
+
+.board-item:active {
+  color: rgb(252, 93, 93);
+  transform: scale(0.99) translate(0px, -5px);
+}
+
+.board-item::selection {
+  background-color: #f5f5f5;
+}
+
+.create-board-btn {
+  margin: 10px;
+}
+
+.create-board-popover {
+  position: absolute;
+  margin-left: 180px;
+  margin-top: -100px;
+
+  width: 300px;
+  height: 200px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+}
+
+.popover-header {
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.popover-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popover-body span {
+  margin-top: 10px;
+}
+
+.create-btn {
+  margin: 10px 0px;
+}

@@ -1,0 +1,117 @@
+.task-window-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000094;
+  padding: 10px;
+  overflow-y: auto;
+  animation: taskWindowFadIn 0.1s linear;
+}
+
+@keyframes taskWindowFadIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.task-window-content {
+  position: fixed;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+
+  right: 0;
+  left: 0;
+  width: 50%;
+  height: 500px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.task-window-title {
+  margin-bottom: 20px;
+}
+
+.task-window-subtitle {
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  font-size: 1em;
+  font-weight: 600;
+  color: #172b4d;
+}
+
+.title-icon {
+  width: 40px;
+  height: 40px;
+}
+.subtitle-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.task-section {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.task-name {
+  margin-left: 20px;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #172b4d;
+}
+
+.task-description {
+  padding: 5px 10px;
+}
+
+/* .control-buttons {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+} */
+
+.control-buttons button {
+  margin: 5px;
+}
+
+.task-title-input {
+  margin-left: 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  font-size: 1.5em;
+}
+.create-comment-area {
+  height: 40px;
+  width: 100%;
+  resize: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.assign-btn {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+}
+
+.assigned-icon {
+  margin: 10px;
+}
+
+.remove-assigned-btn {
+  margin-left: 10px;
+}

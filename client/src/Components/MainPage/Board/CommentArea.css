@@ -1,0 +1,45 @@
+.save-comment-btn {
+  background-color: #0079bf;
+  color: #fafafa;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 3px 7px;
+  border: none;
+}
+
+.edit-window {
+  width: 100%;
+}
+.edit-comment {
+  resize: none;
+  width: 100%;
+}
+
+.close-comment-btn {
+  font-size: large;
+  font-weight: bold;
+  margin-left: 15px;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+}
+
+.save-close-btns {
+  margin-left: 10px;
+}
+
+.comment-textarea {
+  resize: none;
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 2px 50px 75px 4px;
+}
+
+textarea:focus {
+  outline: none !important;
+  border-color: #999c9f;
+  box-shadow: 0 0 10px #999c9f;
+  padding-bottom: 20px;
+  height: 60px;
+}

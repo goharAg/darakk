@@ -1,0 +1,173 @@
+.profile {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.profile-loading {
+  border-radius: 200px;
+  animation: loading-animation 0.5s alternate ease-in infinite;
+}
+
+@keyframes loading-animation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.profile-header {
+  background-color: #e9e9e9;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.profile-image {
+  position: relative;
+}
+
+.profile-image:hover .middle {
+  opacity: 1;
+}
+
+.profile-image:hover img {
+  opacity: 0.3;
+}
+
+.default-image {
+  position: relative;
+}
+
+.default-image:hover .middle {
+  opacity: 1;
+}
+
+.default-image:hover img {
+  opacity: 0.3;
+}
+
+.middle input {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+.delete-image-btn {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  margin-top: 10px;
+}
+
+.display-name {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #172b4d;
+}
+
+.settings-group {
+  width: 100%;
+}
+
+.settings-group input {
+  width: fit-content;
+}
+
+.settings-header {
+  font-size: 25px;
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.default-image img {
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.profile-body {
+  width: 500px;
+  margin: 20px auto;
+  padding: 50px 50px 50px 50px;
+  height: 100%;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgb(192, 192, 192);
+}
+
+.settings-h-line {
+  width: 100%;
+}
+
+.remove-account-btn {
+  display: table;
+  margin: 0 auto;
+  color: red;
+}
+
+.remove-account-btn:hover {
+  cursor: pointer;
+  color: rgb(221, 8, 8);
+}
+
+.remove-account-btn:active {
+  color: rgb(175, 8, 8);
+}
+
+.remove-account-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000bb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-account-popup-content {
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-account-text {
+  display: flex;
+  text-align: center;
+  margin-bottom: 20px;
+}

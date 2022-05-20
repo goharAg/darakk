@@ -1,0 +1,28 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["google", "eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 13
+  },
+  "rules": {
+    "object-curly-spacing": ["error", "always"],
+    "no-console": 2,
+    "no-unused-vars": 1,
+    "indent": ["error", 2],
+    "strict": [2, "never"],
+    "max-len": [1, 250],
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-invalid-this": 0,
+    "no-await-in-loop": 2
+  }
+}

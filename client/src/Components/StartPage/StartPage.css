@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  width: 300px;
+
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 30px 30px 20px;
+  box-shadow: 0 0 6px rgb(192, 192, 192);
+
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-group {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.form-container input {
+  width: 100%;
+}
+
+.form-container input:focus {
+  box-shadow: none;
+  border: 2px solid black;
+}
+
+.form-container input:active {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid black;
+}
+
+form.signinout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, -10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0px);
+  }
+}
+
+button.submit-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.switch {
+  margin-top: 10px;
+}
+.switch a {
+  text-decoration: none;
+  color: blue;
+}
+
+hr.seperator {
+  border-top: 1px solid rgb(104, 99, 99);
+}
+
+.flex-form-holder {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.character {
+  height: 300px;
+  width: 300px;
+}
+
+.signin-error {
+  color: red;
+  font-size: 0.8rem;
+}
