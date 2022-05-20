@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const routes = require('./routes/routes');
 const socketio = require('socket.io');
 
-const app = express(express.static(path.resolve(__dirname, "../../client/build")));
+const app = express(express.static(path.resolve(__dirname, "../client/build")));
 
 const server = http.createServer(app);
 
