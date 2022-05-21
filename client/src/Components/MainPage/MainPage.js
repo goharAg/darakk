@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import AlmostTrello from '../../Assets/Images/AlmostTrello.png';
+import darakk from '../../Assets/Images/darakk.png';
 import './MainPage.css';
 import { useAuth } from '../../AuthContext';
 import profilePicture from '../../Assets/Images/profilePicture.png';
@@ -43,7 +43,7 @@ const MainPage = () => {
       <nav className="d-flex justify-content-start navbar navbar-expand-lg navbar-light bg-light ">
         {/* <div> */}
         <a className="navbar-brand" href="/">
-          <img src={AlmostTrello} />
+          <img style={{ maxWidth: '300px' }} src={darakk} />
         </a>
         <Link to="/dashboard" className="nav-link link-dark">
           Dashboard

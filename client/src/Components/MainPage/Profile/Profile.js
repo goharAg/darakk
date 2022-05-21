@@ -6,7 +6,7 @@ import Loading from '../../shared/Loading';
 import ErrorWrapper from '../../shared/ErrorWrapper';
 import CloseButton from '../../shared/CloseButton';
 
-import profilePicture from '../../../Assets/Images/profilePicture.png';
+import profilePicture from '../../../Assets/Images/profilePictureWhite.png';
 import loadingProfile from '../../../Assets/Images/loadingProfile.gif';
 import './Profile.css';
 
@@ -119,7 +119,7 @@ const Profile = () => {
     <Loading isLoading={state.isLoading} src={loadingProfile} className="profile-loading">
       <ErrorWrapper error={state.error}>
         <ToastContainer autoClose={2000} position={toast.POSITION.BOTTOM_RIGHT} />
-        <div className="profile">
+        <div className="profile bg-dark">
           <div className="profile-header">
             <div className={user.image_name ? 'profile-image' : 'default-image'}>
               <img className="rounded-circle" src={user.image_name ? `${client.HOST_NAME}/${user.image_name}` : profilePicture} />
@@ -157,7 +157,7 @@ const Profile = () => {
                 <div className="form-group">
                   <input onChange={handleAboutChange} onBlur={handleAboutBlur} name="last_name" type="text" className="form-control" placeholder="Last Name" defaultValue={user.last_name} />
                 </div>
-                <button disabled={state.submitAboutDisabled} type="submit" className="btn btn-success">
+                <button disabled={state.submitAboutDisabled} type="submit" className="btn btn-outline-light">
                   Save
                 </button>
               </div>
@@ -176,7 +176,7 @@ const Profile = () => {
                   <input onChange={handleSecurytyChange} value={security.new_password} name="new_password" type="password" className="form-control" placeholder="New Password" />
                 </div>
 
-                <button disabled={state.submitSecurityDisabled} type="submit" className="btn btn-success">
+                <button disabled={state.submitSecurityDisabled} type="submit" className="btn btn-outline-light">
                   Change password
                 </button>
                 <hr className="settings-h-line" />

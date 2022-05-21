@@ -2,6 +2,7 @@ const db = require('../modules/db/models');
 const BaseController = require('./base.controller');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const MemberService = require('../services/member.service');
 
 class MemberController extends BaseController {
   constructor() {
@@ -9,215 +10,74 @@ class MemberController extends BaseController {
   }
 
   add = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.params.userId;
     try {
-      const memberExists = await db.UserBoardMapping.findOne({
-        where: {
-          board_id: boardId,
-          user_id: userId,
-        },
-      });
-      if (memberExists) {
-        throw this.responseHandler.getMemberExistsError('User already exists on board');
-      }
-      const userBoardMappingInfo = await db.UserBoardMapping.create({
-        board_id: boardId,
-        user_id: userId,
-        is_admin: false,
-      });
-      const member = await db.UserBoardMapping.findOne({
-        where: {
-          board_id: boardId,
-          user_id: userId,
-        },
-        include: {
-          model: db.User,
-          as: 'user',
-        },
-      });
-      req.io.to(Number(boardId)).emit('member', {
-        member: { ...member.user.dataValues, is_admin: member.is_admin },
-        userId: req.user.id,
-        action: 'create',
-      });
-      return this.responseHandler.successResponse(userBoardMappingInfo, res);
+      const result = await MemberService.add(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   remove = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.params.userId;
     try {
-      if (Number(userId) === req.user.id) {
-        throw this.responseHandler.getForbiddenError('Can not remove yourself');
-      }
-      const isDestroyed = await db.UserBoardMapping.destroy({
-        where: {
-          user_id: userId,
-          board_id: boardId,
-        },
-      });
-      req.io.to(Number(boardId)).emit('member', {
-        deletedId: Number(userId),
-        userId: req.user.id,
-        action: 'delete',
-      });
-      return this.responseHandler.successResponse(isDestroyed, res);
+      const result = await MemberService.remove(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   findMatchUsers = async (req, res) => {
-    const userEmail = req.body.userEmail;
     try {
-      const users = await db.User.findAll({
-        where: {
-          email: {
-            [Op.like]: `%${userEmail}%`,
-          },
-        },
-        limit: 5,
-        raw: true,
-      });
-      return this.responseHandler.successResponse(users, res);
+      const result = await MemberService.findMatchUsers(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   findBoardMembers = async (req, res) => {
-    const userEmail = req.body.userEmail;
-    const boardId = req.body.boardId;
     try {
-      let users = await db.User.findAll({
-        where: {
-          email: {
-            [Op.like]: `%${userEmail}%`,
-          },
-        },
-        limit: 5,
-        raw: true,
-      });
-      let boardUsers = await db.UserBoardMapping.findAll({
-        where: {
-          board_id: boardId,
-        },
-      });
-      boardUsers = boardUsers.map((cur) => cur.user_id);
-      users = users.filter((cur) => boardUsers.indexOf(cur.id) !== -1);
-      return this.responseHandler.successResponse(users, res);
+      const result = await MemberService.findBoardMembers(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   boardMembers = async (req, res) => {
-    const boardId = req.params.boardId;
     try {
-      const membersObj = await db.UserBoardMapping.findAll({
-        where: {
-          board_id: boardId,
-        },
-        include: {
-          model: db.User,
-          as: 'user',
-        },
-      });
-      const members = [];
-      membersObj.forEach((memberObj) => {
-        members.push({ ...memberObj.user.dataValues, is_admin: memberObj.is_admin });
-      });
-      return this.responseHandler.successResponse(members, res);
+      const result = await MemberService.boardMembers(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   leaveBoard = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.user.id;
     try {
-      const userBoardMappingInfo = await db.UserBoardMapping.findAll({
-        where: {
-          board_id: boardId,
-          is_admin: true,
-        },
-      });
-      if (userBoardMappingInfo.length === 1 && userBoardMappingInfo[0].user_id === userId) {
-        throw this.responseHandler.getLastAdminLeaveError('The only one admin can not leave board');
-      }
-      const destroyCount = await db.UserBoardMapping.destroy({
-        where: {
-          user_id: userId,
-          board_id: boardId,
-        },
-      });
-      req.io.to(Number(boardId)).emit('member', {
-        deletedId: Number(userId),
-        userId: req.user.id,
-        action: 'delete',
-      });
-      return this.responseHandler.successResponse(destroyCount, res);
+      const result = await MemberService.leaveBoard(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   promote = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.params.userId;
-    const isAdmin = true;
     try {
-      const [isBoardMember] = await db.UserBoardMapping.update(
-        {
-          is_admin: isAdmin,
-        },
-        {
-          where: {
-            user_id: userId,
-            board_id: boardId,
-          },
-        }
-      );
-      if (!isBoardMember) {
-        throw this.responseHandler.getForbiddenError('Can not promote without adding to the board');
-      }
-      this.responseHandler.successResponse({ user_id: userId, board_id: boardId, is_admin: isAdmin }, res);
+      const result = await MemberService.promote(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   demote = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.params.userId;
-    const isAdmin = false;
-    const id = req.user.id;
     try {
-      if (Number(userId) === id) {
-        throw this.responseHandler.getForbiddenError(`Admin can not demote himself`);
-      }
-      const [isBoardMember] = await db.UserBoardMapping.update(
-        {
-          is_admin: isAdmin,
-        },
-        {
-          where: {
-            user_id: userId,
-            board_id: boardId,
-          },
-        }
-      );
-      if (!isBoardMember) {
-        throw this.responseHandler.getForbiddenError('Can not demote without adding to the board');
-      }
-      this.responseHandler.successResponse({ user_id: userId, board_id: boardId, is_admin: isAdmin }, res);
+      const result = await MemberService.demote(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 }

@@ -5,7 +5,6 @@
   margin: auto;
   margin-top: 50px;
   width: 70%;
-  background-color: #fbfbfb;
   padding: 20px 50px;
 }
 
@@ -17,7 +16,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  color: #172b4d;
+  color: white;
   font-size: 30px;
   font-weight: bold;
   margin-left: 10px;
@@ -36,7 +35,7 @@
   background-image: url(/src/Assets/Images/boardItem.jpg);
   background-size: cover;
   border-radius: 4px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.8);
 
   margin: 10px;
   width: 200px;

@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [dashboardChanged, setDashboardChanged] = useState(false);
 
   const fetchAllBoards = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     try {
       const boards = await client.getBoards();
       setBoards(boards);
@@ -52,7 +52,7 @@ const Dashboard = () => {
           <div>
             <div className="boards-container">{boardItems}</div>
             <div>
-              <button onClick={() => setPopupOpen(!popupOpen)} type="button" className="btn btn-success create-board-btn">
+              <button onClick={() => setPopupOpen(!popupOpen)} type="button" className="btn btn-outline-light create-board-btn">
                 Create new board
               </button>
               {popupOpen && <CreateBoardPopover boards={boards} setBoards={setBoards} setPopupOpen={setPopupOpen} />}

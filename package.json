@@ -15,15 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hovhannisyangurgen/almost-trello.git",
+    "url": "https://github.com/goharAg/darakk.git",
     "directory": "api"
   },
-  "author": "Web Development Internship Team",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hovhannisyangurgen/almost-trello/issues"
-  },
-  "homepage": "https://github.com/hovhannisyangurgen/almost-trello#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",

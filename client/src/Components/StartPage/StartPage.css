@@ -7,11 +7,15 @@
   margin-bottom: 2rem;
 }
 
+.start-container {
+  background-color: #25282e !important;
+  height: 100vh;
+}
+
 .brand {
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-top: 20px;
   width: fit-content;
   padding: 10px;
 }
@@ -27,7 +31,6 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 35px;
   width: 300px;
 
   background-color: rgb(245, 245, 245);
@@ -39,6 +42,9 @@ form {
   animation: fadeIn 0.3s ease-in-out;
 }
 
+.logo {
+  max-width: 250px;
+}
 .form-group {
   width: 200px;
   margin-bottom: 20px;

@@ -27,15 +27,10 @@ const Options = {
   updatedAt: 'updated_at',
 };
 
-const Association = ({ User, Comment, CommentEmoji, Task }) => {
+const Association = ({ User, Comment, Task }) => {
   Comment.belongsTo(User, {
     foreignKey: 'user_id',
     as: 'user',
-  });
-  Comment.hasMany(CommentEmoji, {
-    sourceKey: 'id',
-    foreignKey: 'comment_id',
-    as: 'emojis',
   });
 };
 

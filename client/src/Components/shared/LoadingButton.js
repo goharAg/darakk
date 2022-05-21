@@ -18,7 +18,7 @@ const LoadingButton = ({ loading, disabled, onClick, text, className, ...props }
     }
   };
   return (
-    <button disabled={isLoading || disabled} onClick={handleClick} className={`btn btn-success loading-btn ${className}`} {...props}>
+    <button disabled={isLoading || disabled} onClick={handleClick} className={`btn btn-outline-secondary loading-btn ${className}`} {...props}>
       {isLoading && <img className="loading-spinner" src={loadingSpinner} />}
       {text}
     </button>

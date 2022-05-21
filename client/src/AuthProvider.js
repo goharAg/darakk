@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
 import client from './services/requests.service';
-import loading from './Assets/Images/loading.gif';
+import loading from './Assets/Images/taskLoading.gif';
 import ErrorWrapper from './Components/shared/ErrorWrapper';
 
 const AuthProvider = ({ children }) => {

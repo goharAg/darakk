@@ -129,11 +129,6 @@ const createComment = async (taskId, content) => {
   return commentObj.data;
 };
 
-const reactComment = async (commentId, emoji) => {
-  const emojiObj = await client.post(`/boards/states/tasks/comments/${commentId}/emoji`, { emoji });
-  return emojiObj.data.data;
-};
-
 const findMatchUsers = async (userEmail) => {
   const res = await client.post(`/users`, { userEmail });
   return res.data.data;
@@ -234,7 +229,6 @@ export default {
   deleteComment,
   updateComment,
   createComment,
-  reactComment,
   findMatchUsers,
   findBoardUsers,
   getUserById,

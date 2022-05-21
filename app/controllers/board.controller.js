@@ -1,5 +1,6 @@
 const db = require('../modules/db/models');
 const BaseController = require('./base.controller');
+const BoardService = require('../services/board.service');
 
 class BoardController extends BaseController {
   constructor() {
@@ -7,104 +8,47 @@ class BoardController extends BaseController {
   }
 
   getUserBoards = async (req, res) => {
-    const userId = req.user.id;
     try {
-      const boards = await db.User.findByPk(userId, {
-        include: [
-          {
-            model: db.Board,
-            as: 'boards',
-            through: {
-              attributes: ['is_admin'],
-            },
-          },
-        ],
-      });
-      this.responseHandler.successResponse(boards, res);
+      const result = await BoardService.getUserBoards(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   getById = async (req, res) => {
-    const boardId = req.params.boardId;
-    const userId = req.user.id;
     try {
-      const board = await db.Board.findByPk(boardId, {
-        include: {
-          model: db.State,
-          as: 'states',
-          include: {
-            model: db.Task,
-            as: 'tasks',
-            include: {
-              model: db.TaskAssignment,
-              as: 'task_assignments',
-            },
-          },
-        },
-      });
-
-      const boardUser = await db.UserBoardMapping.findOne({
-        where: {
-          user_id: userId,
-          board_id: boardId,
-        },
-      });
-      if (board) {
-        board.dataValues.userIsAdmin = boardUser.is_admin;
-        return this.responseHandler.successResponse(board, res);
-      }
-      throw this.responseHandler.getNotFoundError(`Board with id <${boardId}> not found.`);
+      const result = await BoardService.getById(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   create = async (req, res) => {
-    const board = req.body;
     try {
-      const userId = req.user.id;
-      const createdBoard = await db.Board.create(board);
-      const boardId = createdBoard.id;
-      await db.UserBoardMapping.create({ user_id: userId, board_id: boardId, is_admin: true });
-      this.responseHandler.successResponse(createdBoard, res);
+      const result = await BoardService.create(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   update = async (req, res) => {
-    const boardId = req.params.boardId;
-    const newAttributes = req.body;
     try {
-      const [boardUpdated] = await db.Board.update(newAttributes, {
-        where: {
-          id: boardId,
-        },
-      });
-      const newBoard = await db.Board.findByPk(boardId);
-      if (boardUpdated) {
-        return this.responseHandler.successResponse(newBoard, res);
-      }
-      throw this.responseHandler.getNotFoundError(`Board with id <${boardId}> not found.`);
+      const result = await BoardService.update(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 
   delete = async (req, res) => {
-    const boardId = req.params.boardId;
     try {
-      const numberOfDeletedBoards = await db.Board.destroy({
-        where: { id: boardId },
-      });
-      if (numberOfDeletedBoards) {
-        return this.responseHandler.successResponse({ deleted: numberOfDeletedBoards }, res);
-      }
-      throw this.responseHandler.getNotFoundError(`Board with id <${boardId}> not found.`);
+      const result = await BoardService.delete(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 }

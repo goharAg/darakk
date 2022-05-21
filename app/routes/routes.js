@@ -26,8 +26,6 @@ router.post('/boards/states/tasks/:taskId/comments', validate('comment', 'create
 router.put('/boards/states/tasks/comments/:commentId', validate('comment', 'update'), controllers.comment.update); // edit comment
 router.delete('/boards/states/tasks/comments/:commentId', validate('comment', 'delete'), controllers.comment.delete); // delete comment
 
-router.post('/boards/states/tasks/comments/:commentId/emoji', controllers.emoji.reactComment); // react on comment
-
 router.post('/boards/states/tasks/:taskId/assignment/:userId', validate('assignment', 'create'), controllers.assignment.create); // assign task to user
 router.delete('/boards/states/tasks/assignment/:assignmentId', validate('assignment', 'delete'), controllers.assignment.delete); // delete assignment
 

@@ -1,3 +1,6 @@
+body {
+  background-color: #343a40 !important;
+}
 img {
   /* prevent image selection */
   -webkit-touch-callout: none;

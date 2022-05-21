@@ -138,7 +138,7 @@ const Board = () => {
   return (
     <Loading isLoading={state.isLoading}>
       <ErrorWrapper error={state.error} tryAgainCallback={fetchBoard}>
-        <div className="board bg-light">
+        <div className="board bg-dark">
           <div className="board-header">
             {state.boardObj.name}
             <Member members={members} setMembers={setMembers} boardId={id} boardState={state} setBoardState={setState} />

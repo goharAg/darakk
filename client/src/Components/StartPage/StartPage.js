@@ -2,9 +2,7 @@ import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
 
-import womanWithLaptop from '../../Assets/Images/womanWithLaptop.png';
-import manWithLaptop from '../../Assets/Images/manWithLaptop.png';
-import logo from '../../Assets/Images/AlmostTrello.png';
+import logo from '../../Assets/Images/darakk.png';
 import './StartPage.css';
 
 const StartPage = () => {
@@ -14,16 +12,12 @@ const StartPage = () => {
   }
 
   return (
-    <div>
+    <div className="start-container bg-dark">
       <a className="brand" href="/">
         <img className="logo" src={logo} />
       </a>
       <div className="flex-form-holder">
-        <img className="character" src={manWithLaptop} />
-
         <Outlet />
-
-        <img className="character" src={womanWithLaptop} />
       </div>
     </div>
   );

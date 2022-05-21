@@ -1,24 +1,17 @@
 const db = require('../modules/db/models');
 const BaseController = require('./base.controller');
+const OrderService = require('../services/order.service');
 
 class OrderController extends BaseController {
   constructor() {
     super('order');
   }
   getOrder = async (req, res) => {
-    const stateId = req.params.stateId;
     try {
-      const order = await db.StateOrderMapping.findOne({
-        where: {
-          state_id: stateId,
-        },
-      });
-      if (order) {
-        return this.responseHandler.successResponse(order, res);
-      }
-      throw this.responseHandler.getNotFoundError(`Order of state with id <${stateId}> not found.`);
+      const result = await OrderService.getOrder(req, res);
+      this.responseHandler.successResponse(result, res);
     } catch (err) {
-      this.responseHandler.errorResponse(err, res);
+      return err;
     }
   };
 }

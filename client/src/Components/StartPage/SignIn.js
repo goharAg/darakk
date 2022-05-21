@@ -42,8 +42,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="form-container">
-      <h4 className="form-title">Sign In to Almost Trello</h4>
+    <div className="form-container bg-dark text-white">
+      <h4 className="form-title">Sign In</h4>
       {state.error && <p className="signin-error">{state.error}</p>}
       <form ref={signInForm} onSubmit={handleSubmit} className="signinout">
         <div className="form-group">

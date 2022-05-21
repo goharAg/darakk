@@ -1,6 +1,7 @@
 .profile {
   margin: 0 auto;
   width: 100%;
+  color: white;
 }
 
 .profile-loading {
@@ -19,7 +20,7 @@
 }
 
 .profile-header {
-  background-color: #e9e9e9;
+  color: white;
   padding: 20px 0;
   display: flex;
   justify-content: center;
@@ -83,7 +84,6 @@ label {
   margin-left: 20px;
   font-size: 30px;
   font-weight: bold;
-  color: #172b4d;
 }
 
 .settings-group {
@@ -112,7 +112,7 @@ label {
 
 .profile-body {
   width: 500px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 50px 50px 50px 50px;
   height: 100%;
   border-left: 2px solid #ccc;
